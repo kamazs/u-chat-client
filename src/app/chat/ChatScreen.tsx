@@ -29,7 +29,9 @@ export class ChatScreenComponent extends React.Component<ChatScreenProps, ChatSc
                     <div className={styles.messagesContainer}>
                         <ul className={styles.messages}>
                             {this.props.messages.map(msg =>
-                                <li key={msg.timestamp}>[ {new Date(msg.timestamp).toLocaleTimeString()} ] <strong>{msg.name}: </strong>{msg.message}</li>
+                                <li key={msg.timestamp}>
+                                    [ {new Date(msg.timestamp).toLocaleTimeString()} ] <strong>{msg.name}: </strong>{msg.message}
+                                </li>
                             )}
                         </ul>
                     </div>
