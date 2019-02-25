@@ -6,6 +6,7 @@ import { Key } from "ts-keycode-enum";
 import * as styles from "./LoginScreen.css";
 import { Logo } from "../components/logo/Logo";
 import { LoginNotification } from "./LoginNotification";
+import { UButton } from "../components/button/UButton";
 
 type LoginScreenState = {
     userName: string;
@@ -40,9 +41,7 @@ export class LoginScreenComponent extends React.Component<LoginScreenProps, Logi
                         onKeyUp={this.submitOnEnter}
                         disabled={this.props.connectionStatus === ConnectionStatus.Pending}
                     />
-                    <div className={styles.button} onClick={this.onConnect}>
-                        Join
-                    </div>
+                    <UButton caption="Join" onClick={this.onConnect} />
                 </div>
                 {lastMessage && lastMessage.message &&
                     <LoginNotification message={lastMessage.message} />}

@@ -140,8 +140,9 @@ export function reducer(state = initialState, action: UChatAction) {
         case DISCONNECT:
             return {
                 ...state,
+                messages: [],
                 userName: "",
-                connectionStatus: ConnectionStatus.Pending,
+                connectionStatus: ConnectionStatus.Disconnected,
             };
         case SEND_MESSAGE:
         case ADD_MESSAGE:

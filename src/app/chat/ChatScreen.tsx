@@ -1,12 +1,14 @@
 import * as React from "react";
 import { Key } from 'ts-keycode-enum';
-import { State, sendMessage, ChatMessage } from "../state/state";
+import { State, sendMessage, ChatMessage, disconnect } from "../state/state";
 import { connect } from "react-redux";
 
 import * as styles from "./ChatScreen.css";
+import { UButton, ButtonTheme } from "../components/button/UButton";
 
 type ChatScreenProps = {
     sendMessage: typeof sendMessage;
+    disconnect: typeof disconnect;
     userName: string;
     messages: ChatMessage[];
 };
@@ -23,23 +25,28 @@ export class ChatScreenComponent extends React.Component<ChatScreenProps, ChatSc
     public render() {
         return (
             <div className={styles.chatScreen}>
-                <div className={styles.messagesContainer}>
-                    <ul className={styles.messages}>
-                        {this.props.messages.map(msg =>
-                            <li key={msg.timestamp}>[ {new Date(msg.timestamp).toLocaleTimeString()} ] <strong>{msg.name}: </strong>{msg.message}</li>
-                        )}
-                    </ul>
+                <div className={styles.inner}>
+                    <div className={styles.messagesContainer}>
+                        <ul className={styles.messages}>
+                            {this.props.messages.map(msg =>
+                                <li key={msg.timestamp}>[ {new Date(msg.timestamp).toLocaleTimeString()} ] <strong>{msg.name}: </strong>{msg.message}</li>
+                            )}
+                        </ul>
+                    </div>
+                    <input
+                        type="text"
+                        value={this.state.currentMessage}
+                        onChange={this.onInputChange}
+                        onKeyUp={this.sendOnEnter}
+                        className={styles.input}
+                    />
+                    <div className={styles.sendButtonContainer}>
+                        <UButton caption="Send" onClick={this.send} />
+                    </div>
+                    <div className={styles.disconnectButtonContainer}>
+                        <UButton caption="X" onClick={this.props.disconnect} theme={ButtonTheme.Round} />
+                    </div>
                 </div>
-                <input
-                    required
-                    type="text"
-                    id="chat-input"
-                    name="chat-input"
-                    value={this.state.currentMessage}
-                    onChange={this.onInputChange}
-                    onKeyUp={this.sendOnEnter}
-                    className={styles.input}
-                />
             </div>
         );
     }
@@ -69,5 +76,5 @@ export const ChatScreen = connect(
         userName: state.userName,
         messages: state.messages,
     }),
-    { sendMessage },
+    { sendMessage, disconnect },
 )(ChatScreenComponent);
