@@ -14,16 +14,10 @@ export function messenger() {
                 addServerListeners(socket, store);
                 break;
             case JOIN:
-                socket.emit(
-                    "join",
-                    JSON.stringify({ name: action.payload }),
-                );
+                socket.emit("join", action.payload);
                 break;
             case SEND_MESSAGE:
-                socket.emit(
-                    "message",
-                    action.payload.message,
-                )
+                socket.emit("message", action.payload.message);
                 break;
             case DISCONNECT:
                 socket.close();
