@@ -1,8 +1,7 @@
-#Full Stack Chat Task (FRONTEND)
+# Full Stack Chat Task (FRONTEND)
 Description In this task, you need to create a chatroom web app which allow multiple users login/send message/receive message simultaneously. 
 The task is to create a chat client and server application. Create separate projects for server and client, and submit your solution as GitHub repository links. Detailed requirements follow. 
 
-##Client 
 1. Has two pages landing page (shown when not connected to the server) and chat 
 (shown only when connected to the server).
 2. Landing page has a box to enter nickname, a button to connect, and also displays feedback like 'Failed to connect. Nickname already taken.', 'Server unavailable.' or 'Disconnected by the server due to inactivity.'.
