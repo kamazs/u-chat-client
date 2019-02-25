@@ -1,0 +1,23 @@
+@keyframes appear {
+    from {
+        transform: translate(-50%, 100%);
+    }
+    to {
+        transform: translate(-50%, -120%);
+    }
+}
+
+
+.notification {
+    position: absolute;
+    padding: 2.1em;
+    border-radius: 0.5em;
+    background-color: white;
+    left: 50%;
+    bottom: 0;
+    transform: translate(-50%, 100%);
+    color: skyblue;
+
+    animation: appear 1s ease-out;
+    animation-fill-mode: forwards;
+}

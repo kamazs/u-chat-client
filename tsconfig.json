@@ -1,0 +1,29 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "esModuleInterop": true,
+        "target": "es6",
+        "noImplicitAny": true,
+        "moduleResolution": "node",
+        "sourceMap": true,
+        "baseUrl": ".",
+        "allowSyntheticDefaultImports": true,
+        "jsx": "react",
+        "outDir": "./build/",
+        "preserveConstEnums": true,
+        "removeComments": true,
+        "paths": {
+            "*": [
+                "node_modules/*",
+                "src/types/*"
+            ]
+        },
+        "lib": [
+            "es2015",
+            "dom"
+        ]
+    },
+    "include": [
+        "src/**/*"
+    ]
+}
